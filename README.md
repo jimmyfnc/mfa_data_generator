@@ -189,7 +189,7 @@ CORRECTION_TOLERANCE: 0.001,              // ±0.1% tolerance
 
 ## 📊 Data Schema
 
-### CSV Columns (24 fields)
+### CSV Columns (26 fields)
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -217,6 +217,11 @@ CORRECTION_TOLERANCE: 0.001,              // ±0.1% tolerance
 | `IS_ADMIN` | Boolean | Whether user has admin privileges |
 | `TL_DATE` | Date | Trendline date (first of month: YYYY-MM-01) |
 | `DATA_AS_OF` | Date | Report date (when data was generated) |
+| `APP_RISK_LEVEL` | String | Application risk level (CRITICAL, HIGH_RISK, MEDIUM_RISK, LOW_RISK) |
+| `APP_MFA_REQUIRED` | Boolean | Whether application requires MFA (True/False) |
+
+**New in v2.5.0**: The `APP_RISK_LEVEL` and `APP_MFA_REQUIRED` fields enable direct calculation of the Gartner ODM metric "% of critical/high-risk applications protected by MFA" in Tableau, Power BI, or other BI tools. See [TABLEAU_ODM_GUIDE.md](TABLEAU_ODM_GUIDE.md) for complete dashboard integration instructions.
+
 
 ### Compliance Logic
 
@@ -389,7 +394,14 @@ ORDER BY TL_DATE;
 
 See [CHANGELOG.md](CHANGELOG.md) for version history and detailed changes.
 
-### Latest Version: 2.4.0 (2025-10-30)
+### Latest Version: 2.5.0 (2025-10-30)
+
+**Added:**
+- ODM fields in CSV output (APP_RISK_LEVEL, APP_MFA_REQUIRED)
+- Tableau integration guide (TABLEAU_ODM_GUIDE.md)
+- Direct Gartner ODM metric calculation support
+
+**Previous Version: 2.4.0**
 
 **Added:**
 - Target correction feature for exact KPI compliance

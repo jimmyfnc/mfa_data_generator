@@ -6,6 +6,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [2.4.0] - 2025-10-30
+## [2.5.0] - 2025-10-30
+
+### Added
+- **ODM Fields in CSV Output**: Added Gartner ODM calculation fields to enable dashboard metrics
+  - `APP_RISK_LEVEL`: Application risk classification (CRITICAL, HIGH_RISK, MEDIUM_RISK, LOW_RISK)
+  - `APP_MFA_REQUIRED`: Boolean indicating if application requires MFA authentication
+  - CSV output expanded from 24 to 26 columns
+- **Tableau Integration Guide**: Comprehensive documentation for BI tool integration
+  - New `TABLEAU_ODM_GUIDE.md` with step-by-step Tableau calculated field instructions
+  - Multiple calculation approaches (simple, LOD expressions)
+  - Dashboard design templates and examples
+  - Pre-built worksheet formulas for ODM metric visualization
+  - SQL query examples for various BI platforms
+- **ODM Metric Support**: Direct calculation of "% of critical/high-risk apps with MFA"
+  - Enable real-time ODM dashboards without manual application inventory
+  - Support for Tableau, Power BI, Looker, and other BI tools
+  - Color-coded KPI cards with target thresholds
+
+### Changed
+- Updated script header to version 2.5.0 with ODM features highlighted
+- Enhanced CSV documentation to reflect new 26-column output format
+- Improved inline code comments explaining ODM field usage
+
+### Documentation
+- Added TABLEAU_ODM_GUIDE.md with comprehensive dashboard integration guide
+- Updated script header with version history and new features
+- Documented Tableau calculated field formulas for ODM metric
+- Added troubleshooting section for BI tool integration
+
+### Technical Details
+- ODM fields populated from existing internal calculations
+- No impact on data generation performance
+- Maintains backward compatibility (fields can be ignored if not needed)
+- Fields available in CSV, TSV, and JSON output formats
+
+### Use Cases Enabled
+- Real-time Gartner ODM compliance dashboards
+- Application-level MFA coverage tracking
+- Risk-based security posture reporting
+- Executive KPI scorecards
+- Audit and compliance reporting
+
 
 ### Added
 - **Target Correction Feature**: Automatic data adjustment to hit exact KPI targets
@@ -116,3 +158,4 @@ The generator will:
 ## Contributors
 
 - Claude (Anthropic) - v2.4.0 bug fixes and target correction feature
+

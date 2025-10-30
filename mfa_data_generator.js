@@ -1,45 +1,62 @@
 //==================================================================================
 // 🔐 MFA (MULTI-FACTOR AUTHENTICATION) DATA GENERATOR WITH ODM ANALYTICS
-// VERSION 2.0 - Enhanced with Validation and Config Improvements
+// VERSION 2.5.0 - ODM Fields & Tableau Integration
 //==================================================================================
 //
 // 📋 USAGE INSTRUCTIONS:
 // =====================
 //
 // 1. SUMMARY ONLY (Statistics without data flood):
-//    node mfa_data_generator_v2.js --summary-only
+//    node mfa_data_generator.js --summary-only
 //    • Shows detailed MFA coverage statistics and analysis
 //    • No CSV data output to console (clean, readable results)
 //    • Perfect for reviewing metrics and insights
 //
 // 2. SAVE TO FILE (Full data + summary):
-//    node mfa_data_generator_v2.js > mfa_data.csv
-//    • Saves all MFA sign-in records to CSV file
+//    node mfa_data_generator.js > mfa_data.csv
+//    • Saves all MFA sign-in records to CSV file (26 columns)
 //    • Automatically creates companion mfa_stats_[timestamp].txt file with statistics
 //    • Clean CSV data for analysis, readable statistics in separate text file
+//    • Includes ODM fields for Tableau/BI tool calculations
 //
 // 3. FULL CONSOLE OUTPUT (All data to screen):
-//    node mfa_data_generator_v2.js
+//    node mfa_data_generator.js
 //    • Displays everything in console (very long output)
 //    • Use only if you need to see raw data immediately
 //
 // 4. REPRODUCIBLE DATA (Using seed):
-//    node mfa_data_generator_v2.js --seed 12345
+//    node mfa_data_generator.js --seed 12345
 //    • Generates identical data every time with the same seed
 //    • Perfect for testing, debugging, and consistent demo data
 //    • Can be combined with other options: --summary-only --seed 12345
 //
 // 5. VALIDATION MODE (Check data quality):
-//    node mfa_data_generator_v2.js --validate
+//    node mfa_data_generator.js --validate
 //    • Runs validation checks after generation
 //    • Reports if generated data meets config targets
 //    • Automatically enabled with --summary-only
 //
 // 6. CONFIGURATION OPTIONS:
 //    • Set RECORD_COUNT for total number of sign-in records to generate
-//    • Adjust APPLICATION_COUNT for number of applications
+//    • Set CURRENT_MONTH_TARGET_COMPLIANCE for exact current month compliance (e.g., 0.95)
+//    • ENABLE_EXACT_TARGET_CORRECTION to auto-adjust data to hit exact targets
 //    • Modify BASELINE_MFA_COVERAGE for MFA protection on critical/high-risk apps
 //    • Set RANDOM_SEED to a number for reproducible data (or use --seed argument)
+//
+// 📊 NEW IN VERSION 2.5.0:
+// ========================
+// • Added APP_RISK_LEVEL and APP_MFA_REQUIRED columns to CSV output (now 26 columns)
+// • Enable Gartner ODM metric calculation directly in Tableau/Power BI
+// • See TABLEAU_ODM_GUIDE.md for complete dashboard integration instructions
+// • ODM Metric: "What % of critical/high-risk apps are protected by MFA?"
+//
+// 📊 VERSION HISTORY:
+// ===================
+// v2.5.0 (2025-10-30) - Added ODM fields to CSV, Tableau integration guide
+// v2.4.0 (2025-10-30) - Target correction, dynamic current date, bug fixes
+// v2.3.0 - KPI-driven configuration and validation framework
+// v2.0.0 - Enhanced with validation and config improvements
+// v1.0.0 - Initial MFA data generator
 //
 //==================================================================================
 
